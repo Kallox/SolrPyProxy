@@ -1,6 +1,23 @@
+# Basic FastAPI configuration
 title: SolrPyProxy
 description: A FastAPI-based specialized proxy that connect to SolR instace to provide a safer way to perform advanced metadata queries
 version: 0.1.0
 contact:
   name: Person Name
   email: examplel@example.com
+
+# Routes configuration
+routes:
+  - path: /example
+    method: GET
+    description: Example route
+    tags:
+      - example
+    response_model: ExampleResponseModel
+  
+  - path: /another-example
+    method: GET
+    description: Another example route
+    tags:
+      - another-example
+    response_model: AnotherExampleResponseModel
