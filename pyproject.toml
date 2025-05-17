@@ -5,7 +5,9 @@ description = "A FastAPI-based specialized proxy that connect to SolR instace to
 authors = [
     { name = "Claudio 'Kallox' Ramirez", email = "claudramir99@gmail.com" }
 ]
-dependencies = []
+dependencies = [
+    "fastapi>=0.115.12",
+]
 readme = "README.md"
 requires-python = ">= 3.13.2"
 
