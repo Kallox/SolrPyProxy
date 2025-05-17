@@ -1,0 +1,40 @@
+[project]
+name = "solrpyproxy"
+version = "0.1.0"
+description = "A FastAPI-based specialized proxy that connect to SolR instace to provide a safer way to perform advanced metadata queries"
+authors = [
+    { name = "Claudio 'Kallox' Ramirez", email = "claudramir99@gmail.com" }
+]
+dependencies = []
+readme = "README.md"
+requires-python = ">= 3.13.2"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+start = "src.app:main"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "black>=25.1.0",
+    "isort>=6.0.1",
+    "mypy>=1.15.0",
+    "pylint>=3.3.7",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.rye.scripts]
+sort_imports = "isort src/"
+black_format = "black src/"
+format = { chain = ["sort_imports", "black_format"] }
+lint = "pylint src/"
+typing = "mypy src/"
+check_code = { chain = ["format", "typing", "lint"] }
