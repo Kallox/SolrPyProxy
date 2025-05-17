@@ -13,11 +13,15 @@ routes:
     description: Example route
     tags:
       - example
-    response_model: ExampleResponseModel
+    type: SolrQuery
+    response: SolrResponse
+    response_model: SimpleMessage
   
   - path: /another-example
     method: GET
     description: Another example route
     tags:
       - another-example
-    response_model: AnotherExampleResponseModel
+    type: PlainText
+    response: PlainTextResponse
+    response_model: SimpleMessage
