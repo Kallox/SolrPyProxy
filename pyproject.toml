@@ -7,6 +7,8 @@ authors = [
 ]
 dependencies = [
     "fastapi>=0.115.12",
+    "pyyaml>=6.0.2",
+    "uvicorn>=0.34.2",
 ]
 readme = "README.md"
 requires-python = ">= 3.13.2"
@@ -16,7 +18,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project.scripts]
-start = "src.app:main"
+start = "src.main:main"
 
 [tool.rye]
 managed = true
@@ -25,6 +27,7 @@ dev-dependencies = [
     "isort>=6.0.1",
     "mypy>=1.15.0",
     "pylint>=3.3.7",
+    "types-pyyaml>=6.0.12.20250516",
 ]
 
 [tool.hatch.metadata]

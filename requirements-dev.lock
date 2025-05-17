@@ -19,6 +19,7 @@ astroid==3.3.10
 black==25.1.0
 click==8.2.0
     # via black
+    # via uvicorn
 colorama==0.4.6
     # via click
     # via pylint
@@ -26,6 +27,8 @@ dill==0.4.0
     # via pylint
 fastapi==0.115.12
     # via solrpyproxy
+h11==0.16.0
+    # via uvicorn
 idna==3.10
     # via anyio
 isort==6.0.1
@@ -48,12 +51,15 @@ pydantic==2.11.4
 pydantic-core==2.33.2
     # via pydantic
 pylint==3.3.7
+pyyaml==6.0.2
+    # via solrpyproxy
 sniffio==1.3.1
     # via anyio
 starlette==0.46.2
     # via fastapi
 tomlkit==0.13.2
     # via pylint
+types-pyyaml==6.0.12.20250516
 typing-extensions==4.13.2
     # via fastapi
     # via mypy
@@ -62,3 +68,5 @@ typing-extensions==4.13.2
     # via typing-inspection
 typing-inspection==0.4.0
     # via pydantic
+uvicorn==0.34.2
+    # via solrpyproxy
