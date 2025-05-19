@@ -6,8 +6,8 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 
 from src.api.handlers.handler_registry import HANDLER_REGISTRY
-from src.api.schemas import SimpleMessage
 from src.api.handlers.load_handlers import load_all_handlers
+from src.api.schemas import SimpleMessage
 
 RESPONSE_MODELS = {
     "SimpleMessage": SimpleMessage,
