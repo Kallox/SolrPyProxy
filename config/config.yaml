@@ -8,20 +8,12 @@ contact:
 
 # Routes configuration
 routes:
-  - path: /example
+  - path: /health
     method: GET
-    description: Example route
+    description: Check the health of the Solr instance
     tags:
       - example
-    handler: SolrQuery
-    response: SolrResponse
+    handler: health
     response_model: SimpleMessage
-  
-  - path: /another-example
-    method: GET
-    description: Another example route
-    tags:
-      - another-example
-    handler: PlainText
-    response: PlainTextResponse
-    response_model: SimpleMessage
+    request:
+      message: OK
