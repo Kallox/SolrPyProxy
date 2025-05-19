@@ -1,6 +1,6 @@
 """
 HealthHandler
-This module contains the HealthHandler class, which is responsible for handling health check requests.
+This module contains the HealthHandler class, responsible for handling health check requests.
 """
 
 from src.api.handlers.base_handler import BaseHandler

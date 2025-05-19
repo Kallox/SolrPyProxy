@@ -1,6 +1,7 @@
 """
 Base handler class for all handlers.
-This module defines the BaseHandler class, which serves as an abstract base class for all handlers in the application.
+This module defines the BaseHandler class, which serves as an abstract base class for
+all handlers in the application.
 It provides a common interface for handling, validating, and processing requests.
 """
 
@@ -17,18 +18,15 @@ class BaseHandler(ABC):
         """
         Handle the incoming request.
         """
-        pass
 
     @abstractmethod
     def validate(self, request):
         """
         Validate the incoming request.
         """
-        pass
 
     @abstractmethod
     def process(self, request):
         """
         Process the incoming request.
         """
-        pass

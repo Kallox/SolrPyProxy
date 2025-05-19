@@ -3,7 +3,6 @@ Module to load routes from a YAML file and create FastAPI routes dynamically.
 """
 
 from fastapi import FastAPI
-from fastapi.responses import JSONResponse
 
 from src.api.handlers.handler_registry import HANDLER_REGISTRY
 from src.api.handlers.load_handlers import load_all_handlers
@@ -15,6 +14,10 @@ RESPONSE_MODELS = {
 
 
 def create_endpoint(handler_instance, config_request_dict):
+    """
+    Create an endpoint function that will handle the request using the provided handler instance.
+    """
+
     async def endpoint():
         return await handler_instance.handle(config_request_dict)
 
