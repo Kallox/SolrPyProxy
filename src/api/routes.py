@@ -47,7 +47,7 @@ def load_routes(app: FastAPI, routes: list):
         tags = route.get("tags", [])
         response = route.get("response", None)
         response_model = route.get("response_model", SimpleMessage)
-        handler_type = route.get("type", "PlainText")
+        handler_type = route.get("handler", "PlainText")
 
         handler = create_handler(response, handler_type)
 

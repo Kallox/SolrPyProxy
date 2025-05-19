@@ -13,7 +13,7 @@ routes:
     description: Example route
     tags:
       - example
-    type: SolrQuery
+    handler: SolrQuery
     response: SolrResponse
     response_model: SimpleMessage
   
@@ -22,6 +22,6 @@ routes:
     description: Another example route
     tags:
       - another-example
-    type: PlainText
+    handler: PlainText
     response: PlainTextResponse
     response_model: SimpleMessage
