@@ -13,7 +13,7 @@ class BaseHandler(ABC):
     """
 
     @abstractmethod
-    def handle(self, request):
+    async def handle(self, request):
         """
         Handle the incoming request.
         """
