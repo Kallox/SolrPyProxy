@@ -9,12 +9,14 @@ from src.api.handlers.load_handlers import load_all_handlers
 from src.api.schemas import RESPONSE_MODELS, SimpleMessage, generate_response_model
 
 
-def create_endpoint(handler_instance, config_request_dict):
+def create_endpoint(handler_instance, config_request_dict, metadata_mapping=None):
     """
     Create an endpoint function that will handle the request using the provided handler instance.
     """
 
     async def endpoint():
+        if metadata_mapping:
+            handler_instance.set_metadata_mapping(metadata_mapping)
         return await handler_instance.handle(config_request_dict)
 
     return endpoint
@@ -35,7 +37,7 @@ def load_routes(app: FastAPI, routes: list, metadata_mapping: dict):
         method = route["method"].lower()
         description = route["description"]
         tags = route.get("tags", [])
-        response_model = route.get("response_model", SimpleMessage)
+        response_model = route.get("response_model", "SimpleMessage")
         request = route.get("request", {})
         handler_type = route.get("handler", "PlainText")
 
@@ -47,7 +49,9 @@ def load_routes(app: FastAPI, routes: list, metadata_mapping: dict):
 
         app.add_api_route(
             path=path,
-            endpoint=create_endpoint(handler(), request),
+            endpoint=create_endpoint(
+                handler(), request, metadata_mapping.get(response_model, None)
+            ),
             methods=[method.upper()],
             summary=description,
             tags=tags,

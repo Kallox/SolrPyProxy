@@ -18,6 +18,23 @@ routes:
     request:
       message: OK
 
+  - path: /test_solr
+    method: GET
+    description: Test Solr connection
+    tags:
+      - SolR
+    handler: solr
+    response_model: MappedSolrModel
+    request:
+      query:
+        q: "*:*"
+        qt: /select
+        rows: 10
+        start: 0
+        fl: "id,dc.title,dc.date.issued"
+        sort: "dc.date.issued desc"
+
+
 # Metadata mapping configuration for Solr
 metadata_mapping:
   MappedSolrModel:
