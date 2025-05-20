@@ -4,7 +4,7 @@ A FastAPI-based specialized proxy that connect to SolR instace to provide a safe
 ## Requirements
 
 - Python >= 3.13.2
-- [Rye](https://rye-up.com/) para la gestión del entorno y dependencias
+- [Rye](https://rye.astral.sh/) para la gestión del entorno y dependencias
 
 
 ## Run
