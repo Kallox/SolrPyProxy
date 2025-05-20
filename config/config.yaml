@@ -17,3 +17,15 @@ routes:
     response_model: SimpleMessage
     request:
       message: OK
+
+# Metadata mapping configuration for Solr
+metadata_mapping:
+  MappedSolrModel:
+    dc.title:
+      name: title
+      type: str
+      required: false
+    dc.date.issued:
+      name: date_issued
+      type: datetime
+      required: true

@@ -18,6 +18,6 @@ def create_app(config) -> FastAPI:
         contact=config.get("contact", {}),
     )
 
-    load_routes(app, config.get("routes", []))
+    load_routes(app, config.get("routes", []), config.get("metadata_mapping", {}))
 
     return app

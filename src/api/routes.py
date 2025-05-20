@@ -6,11 +6,7 @@ from fastapi import FastAPI
 
 from src.api.handlers.handler_registry import HANDLER_REGISTRY
 from src.api.handlers.load_handlers import load_all_handlers
-from src.api.schemas import SimpleMessage
-
-RESPONSE_MODELS = {
-    "SimpleMessage": SimpleMessage,
-}
+from src.api.schemas import RESPONSE_MODELS, SimpleMessage, generate_response_model
 
 
 def create_endpoint(handler_instance, config_request_dict):
@@ -24,12 +20,15 @@ def create_endpoint(handler_instance, config_request_dict):
     return endpoint
 
 
-def load_routes(app: FastAPI, routes: list):
+def load_routes(app: FastAPI, routes: list, metadata_mapping: dict):
     """
     Load routes from a list and create FastAPI routes dynamically.
     """
 
     load_all_handlers()
+
+    # Generate response models based on metadata mapping
+    generate_response_model(metadata_mapping)
 
     for route in routes:
         path = route["path"]
