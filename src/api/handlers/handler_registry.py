@@ -12,7 +12,6 @@ def register_handler(handler):
     """
 
     def decorator(cls):
-        print("Registering handler:", handler)
         HANDLER_REGISTRY[handler] = cls
         return cls
 
