@@ -26,7 +26,7 @@ class BaseHandler(ABC):
         """
 
     @abstractmethod
-    def process(self, request):
+    async def process(self, request):
         """
         Process the incoming request.
         """

@@ -22,7 +22,7 @@ class HealthHandler(BaseHandler):
         if not self.validate(request):
             return {"message": "Invalid request"}
 
-        response = self.process(request)
+        response = await self.process(request)
 
         return response
 
@@ -43,7 +43,7 @@ class HealthHandler(BaseHandler):
 
         return False
 
-    def process(self, request):
+    async def process(self, request):
         """
         Process the incoming health check request.
         """
