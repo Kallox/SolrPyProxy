@@ -62,10 +62,26 @@ class SolrHandler(BaseHandler):
         """
         # Implement the logic to process the Solr query
 
-        url = self.generate_url(request)
-        response = await self.execute_query(request, url)
+        get_all = request.get("all", False)
+        current_page = 1
+        rows = request["query"].get("rows", 10)
 
-        print(response)
+        url = self.generate_url(request)
+
+        response = await self.execute_query(request, url)
+        data = response.get("response", {}).get("docs", [])
+        
+        numFound = response.get("response", {}).get("numFound", 0)
+        number_of_pages = numFound // request["query"]["rows"] + (numFound % rows > 0)
+
+        if get_all:
+            while current_page < number_of_pages:
+                current_page += 1
+                request["query"]["start"] = (current_page - 1) * rows
+                response = await self.execute_query(request, url)
+                data.extend(response.get("response", {}).get("docs", []))
+
+        print(numFound, len(data))
 
     def generate_url(self, request):
         """

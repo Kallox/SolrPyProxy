@@ -26,6 +26,7 @@ routes:
     handler: solr
     response_model: MappedSolrModel
     request:
+      all: true
       query:
         q: "*:*"
         q.op: "OR"
