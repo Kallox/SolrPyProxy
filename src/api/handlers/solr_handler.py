@@ -28,11 +28,9 @@ class SolrHandler(BaseHandler):
         if not is_valid:
             raise HTTPException(status_code=400, detail=error_message)
 
-        await self.process(request)
+        results = await self.process(request)
 
-        raise HTTPException(
-            status_code=500, detail="Solr query handling not implemented"
-        )
+        return results
 
     def validate(self, request):
         """
@@ -81,7 +79,20 @@ class SolrHandler(BaseHandler):
                 response = await self.execute_query(request, url)
                 data.extend(response.get("response", {}).get("docs", []))
 
-        print(numFound, len(data))
+        results = []
+
+        # Apply metadata mapping
+        for item in data:
+            result = {}
+            for key, value in item.items():
+                if key in self.metadata_mapping:
+                    mapped_key = self.metadata_mapping[key]["name"]
+                    mapped_value = self.metadata_mapping[key] if isinstance(value, str) else value[0]
+                    
+                    result[mapped_key] = mapped_value
+            results.append(result)
+        
+        return results
 
     def generate_url(self, request):
         """

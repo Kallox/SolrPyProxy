@@ -45,5 +45,5 @@ metadata_mapping:
       required: false
     dc.date.issued:
       name: date_issued
-      type: datetime
-      required: true
+      type: str
+      required: false

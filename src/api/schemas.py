@@ -2,7 +2,7 @@
 Schemas for API requests and responses.
 """
 
-from typing import Any, Dict, Tuple, Type, cast
+from typing import Any, Dict, Tuple, Type, cast, List
 
 from pydantic import BaseModel, create_model
 
@@ -47,4 +47,4 @@ def generate_response_model(mapping_config: dict):
 
         # Create a new Pydantic model class
         model_class = create_model(model_name, **cast(dict, fields))
-        RESPONSE_MODELS[model_name] = model_class
+        RESPONSE_MODELS[model_name] = List[model_class]
